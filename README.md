@@ -1,9 +1,7 @@
 Rhomobile Documentation Project
 ==================
 
-This is a simple CMS and documentation for the Rhomobile platform: [http://docs.rhomobile.com](http://docs.rhomobile.com)
-
-Edge changes to this repository are tracked realtime on [http://edgedocs.rhomobile.com](http://edgedocs.rhomobile.com)
+This is a simple CMS and documentation for the Rhomobile platform: [http://docs.rhomobi.com](http://docs.rhomobi.com)
 
 If you'd like to propose an edit to the Rhomobile docs, fork this repo, then send us a pull request.
 
