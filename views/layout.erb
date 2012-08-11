@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Rhomobile | <%=h @title %></title>
+	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" media="screen,print" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/coderay.css" media="screen,print" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/application.css" media="screen,print" />
+	<script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.pjax.min.js"></script>
+	<script type="text/javascript" src="/javascripts/application.js"></script>
+	<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="nav_header">
+  <div class="nav_logos">
+    <a href="http://docs.rhomobi.com" style="font-style:italic" class="nav_logo_rhomobile">RhoMobile</a>
+  </div>
+  <div id="nav_menu">
+    <ul>
+      <li ><a href="http://rhomobi.com/" class="">首页</a></li>
+      <li class="nav_separator"> 
+        <img src="/images/dashboard/tabs_separator.png"> 
+      </li>
+      <li><a href="http://rhomobi.com/topics">社区</a></li>
+      <li><a href="http://rhomobi.com/wiki">教程</a></li>
+      <li><a href="http://rhomobi.com/sites">应用</a></li>
+      <li><a href="http://rhomobi.com/users">会员</a></li>
+	  <li><a href="https://github.com/rhomobile">Github</a></li>
+      <li><a href="http://rhomobi.com/wiki/about">关于</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="container">
+	<div id="doc_container">
+	<div id="docsnav" <% if @print != 0 %> style="display:none" <% end %> >
+		<form action="/search">
+			<div id="search">
+				<input type="text" name="q" size="31" value="<%= params[:q] || '' %>" />
+			</div>
+		</form>
+		<ul>
+			<% collapsed = true %>
+			<% sections.each do |slug, title, topics| %>
+				<% if topics and topics.length > 0 %>
+					<% collapsed = false if TOC.find(request.path_info) == slug %>
+					<div class="accordion-group">
+						<li>
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-target="#<%=slug%>">
+							  <i class="<%= collapsed ? 'icon-plus' : 'icon-minus'%> pull-right"></i>
+								<h3><%= title %></h3>
+							</a>
+						</div>
+						<div id="<%=slug%>" class="accordion-body <%=collapsed ? 'collapse' : 'in'%>">
+							<ul>
+								<% topics.each do |slug, title, _| %>
+									<% if topic_path == slug %>
+										<li class="current"><a onclick="return false" href="/<%= slug %>"><%=h title %></a></li>
+									<% else %>
+										<li><a class='js-pjax' href="/<%= slug %>"><%=h title %></a></li>
+									<% end %>
+								<% end %>
+							</ul>
+						</div>
+						</li>
+					</div>
+					<% collapsed = true %>
+				<% else %>
+					<h2><%= title %></h2>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+
+	<div id="content">
+		<div id="t_content" class="topic_content">
+			<%= yield %>
+		</div>
+	</div>
+	</div>
+</div> <!-- end container -->
+
+<% if request.host == 'docs.rhomobile.com' %>
+
+<!-- google analytics -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34031056-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<% end %>
+</body>
+</html>
