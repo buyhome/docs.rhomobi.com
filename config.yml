@@ -10,7 +10,7 @@ production:
     rhoconnectjs: 'docs/rhoconnectjs/'
     rhoconnect: 'docs/rhoconnect/'
   index: 'rhodocs'
-  pdfkithost: '172.16.154.129:9393'
+  pdfkithost: 'docs.rhomobi.com'
 jenkins:
   dirs:
     rhosync: '../../rhosync/workspace/doc/'
@@ -23,7 +23,7 @@ jenkins:
     rhoconnectjs: '../../rhoconnect.js/workspace/doc/'
     rhoconnect: '../../rhoconnect/workspace/doc/'
   index: 'rhodocs_edge'
-  pdfkithost: '172.16.154.129:9393'
+  pdfkithost: 'docs.rhomobi.com'
 edge:
   dirs:
     rhosync: 'docs/rhosync/'
@@ -36,7 +36,7 @@ edge:
     rhoconnectjs: 'docs/rhoconnectjs/'
     rhoconnect: 'docs/rhoconnect/'
   index: 'rhodocs_edge'
-  pdfkithost: '172.16.154.129:9393'
+  pdfkithost: 'docs.rhomobi.com'
 development:
   dirs:
     rhosync: 'docs/rhosync/'
@@ -49,4 +49,4 @@ development:
     rhoconnectjs: 'docs/rhoconnectjs/'
     rhoconnect: 'docs/rhoconnect/'
   index: 'rhodocs'
-  pdfkithost: '172.16.154.129:9393'
+  pdfkithost: 'docs.rhomobi.com'
