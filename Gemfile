@@ -1,7 +1,7 @@
 source :gemcutter
 
 gem 'pdfkit'
-gem 'rack', '~>1.4.1'
+gem 'rack', '~>1.6.11'
 gem 'sinatra', '~>1.3.0'
 gem 'rdiscount', '1.6.8'
 gem 'rest-client', '~>1.6.0'
